@@ -2,6 +2,7 @@
   "name": "discord-notifier",
   "version": "1.0.0",
   "description": "GitHub Action — Discord push notifications via Message Components v2",
+  "type": "module",
   "main": "src/index.js",
   "scripts": {
     "build": "bun build src/index.js --outdir dist --target node",

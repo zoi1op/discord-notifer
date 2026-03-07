@@ -1,5 +1,5 @@
-const core = require('@actions/core')
-const github = require('@actions/github')
+import * as core from '@actions/core'
+import * as github from '@actions/github'
 
 const webhook = core.getInput('webhook')
 
@@ -37,7 +37,7 @@ function chunkArray(arr, limit = 4096) {
   let current = []
   let length = 0
   for (const item of arr) {
-    const add = (current.length ? 1 : 0) + item.length // +1 for '\n'
+    const add = (current.length ? 1 : 0) + item.length
     if (length + add > limit) {
       chunks.push(current.join('\n'))
       current = [item]
@@ -57,39 +57,40 @@ const allLines = [
 
 const chunks = chunkArray(allLines)
 
-const components = chunks.map((chunk, index) => ({
-  type: 9, // container
-  ...(index === 0 && { accent_color: 0x5865F2 }),
-  components: [
-    ...(index === 0 ? [
-      { type: 10, content: `## ${title}` }, // text_display
-      { type: 14 }                           // separator
-    ] : []),
-    { type: 10, content: chunk },            // text_display
-    ...(index === chunks.length - 1 ? [
-      { type: 14 },                          // separator
+// action_row (type 1) cannot be nested inside a container (type 9)
+// so we build a flat array: containers first, then one action_row at the end
+const components = [
+  ...chunks.map((chunk, index) => ({
+    type: 9, // container
+    ...(index === 0 && { accent_color: 0x5865F2 }),
+    components: [
+      ...(index === 0 ? [
+        { type: 10, content: `## ${title}` }, // text_display
+        { type: 14 }                           // separator
+      ] : []),
+      { type: 10, content: chunk }             // text_display
+    ]
+  })),
+  {
+    type: 1, // action_row — top-level, outside container
+    components: [
       {
-        type: 1,                             // action_row
-        components: [
-          {
-            type: 2,  // button
-            style: 5, // link
-            label: truncate(`${repository.name}: view changes`, 80),
-            url: compareUrl,
-            emoji: { name: '🔀' }
-          },
-          {
-            type: 2,  // button
-            style: 5, // link
-            label: 'Repository',
-            url: repoUrl,
-            emoji: { name: '📁' }
-          }
-        ]
+        type: 2,  // button
+        style: 5, // link
+        label: truncate(`${repository.name}: view changes`, 80),
+        url: compareUrl,
+        emoji: { name: '🔀' }
+      },
+      {
+        type: 2,  // button
+        style: 5, // link
+        label: 'Repository',
+        url: repoUrl,
+        emoji: { name: '📁' }
       }
-    ] : [])
-  ]
-}))
+    ]
+  }
+]
 
 const url = new URL(webhook)
 if (threadId) url.searchParams.set('thread_id', threadId)
