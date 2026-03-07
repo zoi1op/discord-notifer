@@ -16,10 +16,12 @@ if (!/https:\/\/discord(app|)\.com\/api\/webhooks\/\d+?\/.+/i.test(webhook)) {
 const { payload } = github.context
 const shortSha = (s) => s.slice(0, 6)
 const escapeMd = (s) => s.replace(/([\[\]\\`\(\)])/g, '\\$1')
+const firstLine = (s) => s.split('\n')[0].trim()
+const truncate = (s, max) => s.length > max ? s.slice(0, max - 1) + '…' : s
 
 const rawCommits = payload.commits ?? []
 const commits = rawCommits.map(
-  (c) => `- [\`[${shortSha(c.id)}]\`](${c.url}) ${escapeMd(c.message)} - by ${c.author.name}`
+  (c) => `- [\`[${shortSha(c.id)}]\`](${c.url}) ${escapeMd(firstLine(c.message))} - by ${c.author.name}`
 )
 
 if (!commits.length) process.exit(0)
@@ -33,12 +35,17 @@ const threadId = core.getInput('thread-id')
 function chunkArray(arr, limit = 4096) {
   const chunks = []
   let current = []
+  let length = 0
   for (const item of arr) {
-    if (current.join('\n').length + item.length > limit) {
+    const add = (current.length ? 1 : 0) + item.length // +1 for '\n'
+    if (length + add > limit) {
       chunks.push(current.join('\n'))
-      current = []
+      current = [item]
+      length = item.length
+    } else {
+      current.push(item)
+      length += add
     }
-    current.push(item)
   }
   if (current.length) chunks.push(current.join('\n'))
   return chunks
@@ -67,7 +74,7 @@ const components = chunks.map((chunk, index) => ({
           {
             type: 2,  // button
             style: 5, // link
-            label: `${repository.name}: view changes`,
+            label: truncate(`${repository.name}: view changes`, 80),
             url: compareUrl,
             emoji: { name: '🔀' }
           },
