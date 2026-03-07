@@ -26,6 +26,7 @@ if (!commits.length) process.exit(0)
 
 const { before, after, repository } = payload
 const compareUrl = `${repository.url}/compare/${before}...${after}`
+const repoUrl = repository.html_url || repository.url
 const title = core.getInput('message-title') || 'Commits received'
 
 function chunkArray(arr, limit = 4096) {
@@ -46,15 +47,39 @@ const allLines = [
   `[\`\[${shortSha(before)}...${shortSha(after)}\]\`](${compareUrl})`
 ].concat(commits)
 
-const components = chunkArray(allLines).map((chunk, index) => ({
-  type: 9,
+const chunks = chunkArray(allLines)
+
+const components = chunks.map((chunk, index) => ({
+  type: 9, // container
   ...(index === 0 && { accent_color: 0x5865F2 }),
   components: [
     ...(index === 0 ? [
-      { type: 10, content: `## ${title}` },
-      { type: 14 }
+      { type: 10, content: `## ${title}` }, // text_display
+      { type: 14 }                           // separator
     ] : []),
-    { type: 10, content: chunk }
+    { type: 10, content: chunk },
+    ...(index === chunks.length - 1 ? [
+      { type: 14 }, // separator
+      {
+        type: 1, // action_row
+        components: [
+          {
+            type: 2,  // button
+            style: 5, // link
+            label: `${repository.name}: view changes`,
+            url: compareUrl,
+            emoji: { name: '🔀' }
+          },
+          {
+            type: 2,  // button
+            style: 5, // link
+            label: 'Repository',
+            url: repoUrl,
+            emoji: { name: '📁' }
+          }
+        ]
+      }
+    ] : [])
   ]
 }))
 

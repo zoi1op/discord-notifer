@@ -1,18 +1,15 @@
 {
   "name": "discord-notifier",
   "version": "1.0.0",
-  "description": "GitHub Action — Discord push notifications via webhook",
+  "description": "GitHub Action — Discord push notifications via Message Components v2",
   "main": "src/index.js",
   "scripts": {
-    "build": "ncc build src/index.js -o dist --license licenses.txt",
-    "dev": "node src/index.js"
+    "build": "bun build src/index.js --outdir dist --target node",
+    "dev": "bun src/index.js"
   },
   "dependencies": {
     "@actions/core": "^1.10.1",
     "@actions/github": "^6.0.0",
     "axios": "^1.7.2"
-  },
-  "devDependencies": {
-    "@vercel/ncc": "^0.38.1"
   }
 }
