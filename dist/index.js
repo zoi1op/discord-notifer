@@ -1,4 +1,34 @@
 import { createRequire } from "node:module";
+var __create = Object.create;
+var __getProtoOf = Object.getPrototypeOf;
+var __defProp = Object.defineProperty;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+function __accessProp(key) {
+  return this[key];
+}
+var __toESMCache_node;
+var __toESMCache_esm;
+var __toESM = (mod, isNodeMode, target) => {
+  var canCache = mod != null && typeof mod === "object";
+  if (canCache) {
+    var cache = isNodeMode ? __toESMCache_node ??= new WeakMap : __toESMCache_esm ??= new WeakMap;
+    var cached = cache.get(mod);
+    if (cached)
+      return cached;
+  }
+  target = mod != null ? __create(__getProtoOf(mod)) : {};
+  const to = isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target;
+  for (let key of __getOwnPropNames(mod))
+    if (!__hasOwnProp.call(to, key))
+      __defProp(to, key, {
+        get: __accessProp.bind(mod, key),
+        enumerable: true
+      });
+  if (canCache)
+    cache.set(mod, to);
+  return to;
+};
 var __commonJS = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
 var __require = /* @__PURE__ */ createRequire(import.meta.url);
 
@@ -19063,23 +19093,23 @@ var require_before_after_hook = __commonJS((exports, module) => {
 
 // node_modules/@octokit/endpoint/dist-node/index.js
 var require_dist_node2 = __commonJS((exports, module) => {
-  var __defProp = Object.defineProperty;
+  var __defProp2 = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __getOwnPropNames2 = Object.getOwnPropertyNames;
+  var __hasOwnProp2 = Object.prototype.hasOwnProperty;
   var __export = (target, all) => {
     for (var name in all)
-      __defProp(target, name, { get: all[name], enumerable: true });
+      __defProp2(target, name, { get: all[name], enumerable: true });
   };
   var __copyProps = (to, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
-      for (let key of __getOwnPropNames(from))
-        if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+      for (let key of __getOwnPropNames2(from))
+        if (!__hasOwnProp2.call(to, key) && key !== except)
+          __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
     return to;
   };
-  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
   var dist_src_exports = {};
   __export(dist_src_exports, {
     endpoint: () => endpoint
@@ -19476,33 +19506,33 @@ var require_once = __commonJS((exports, module) => {
 
 // node_modules/@octokit/request-error/dist-node/index.js
 var require_dist_node4 = __commonJS((exports, module) => {
-  var __create = Object.create;
-  var __defProp = Object.defineProperty;
+  var __create2 = Object.create;
+  var __defProp2 = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __getProtoOf = Object.getPrototypeOf;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __getOwnPropNames2 = Object.getOwnPropertyNames;
+  var __getProtoOf2 = Object.getPrototypeOf;
+  var __hasOwnProp2 = Object.prototype.hasOwnProperty;
   var __export = (target, all) => {
     for (var name in all)
-      __defProp(target, name, { get: all[name], enumerable: true });
+      __defProp2(target, name, { get: all[name], enumerable: true });
   };
   var __copyProps = (to, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
-      for (let key of __getOwnPropNames(from))
-        if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+      for (let key of __getOwnPropNames2(from))
+        if (!__hasOwnProp2.call(to, key) && key !== except)
+          __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
     return to;
   };
-  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target, mod));
-  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __toESM2 = (mod, isNodeMode, target) => (target = mod != null ? __create2(__getProtoOf2(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target, mod));
+  var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
   var dist_src_exports = {};
   __export(dist_src_exports, {
     RequestError: () => RequestError
   });
   module.exports = __toCommonJS(dist_src_exports);
   var import_deprecation = require_dist_node3();
-  var import_once = __toESM(require_once());
+  var import_once = __toESM2(require_once());
   var logOnceCode = (0, import_once.default)((deprecation) => console.warn(deprecation));
   var logOnceHeaders = (0, import_once.default)((deprecation) => console.warn(deprecation));
   var RequestError = class extends Error {
@@ -19547,23 +19577,23 @@ var require_dist_node4 = __commonJS((exports, module) => {
 
 // node_modules/@octokit/request/dist-node/index.js
 var require_dist_node5 = __commonJS((exports, module) => {
-  var __defProp = Object.defineProperty;
+  var __defProp2 = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __getOwnPropNames2 = Object.getOwnPropertyNames;
+  var __hasOwnProp2 = Object.prototype.hasOwnProperty;
   var __export = (target, all) => {
     for (var name in all)
-      __defProp(target, name, { get: all[name], enumerable: true });
+      __defProp2(target, name, { get: all[name], enumerable: true });
   };
   var __copyProps = (to, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
-      for (let key of __getOwnPropNames(from))
-        if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+      for (let key of __getOwnPropNames2(from))
+        if (!__hasOwnProp2.call(to, key) && key !== except)
+          __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
     return to;
   };
-  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
   var dist_src_exports = {};
   __export(dist_src_exports, {
     request: () => request
@@ -19746,23 +19776,23 @@ var require_dist_node5 = __commonJS((exports, module) => {
 
 // node_modules/@octokit/graphql/dist-node/index.js
 var require_dist_node6 = __commonJS((exports, module) => {
-  var __defProp = Object.defineProperty;
+  var __defProp2 = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __getOwnPropNames2 = Object.getOwnPropertyNames;
+  var __hasOwnProp2 = Object.prototype.hasOwnProperty;
   var __export = (target, all) => {
     for (var name in all)
-      __defProp(target, name, { get: all[name], enumerable: true });
+      __defProp2(target, name, { get: all[name], enumerable: true });
   };
   var __copyProps = (to, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
-      for (let key of __getOwnPropNames(from))
-        if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+      for (let key of __getOwnPropNames2(from))
+        if (!__hasOwnProp2.call(to, key) && key !== except)
+          __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
     return to;
   };
-  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
   var index_exports = {};
   __export(index_exports, {
     GraphqlResponseError: () => GraphqlResponseError,
@@ -19870,23 +19900,23 @@ var require_dist_node6 = __commonJS((exports, module) => {
 
 // node_modules/@octokit/auth-token/dist-node/index.js
 var require_dist_node7 = __commonJS((exports, module) => {
-  var __defProp = Object.defineProperty;
+  var __defProp2 = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __getOwnPropNames2 = Object.getOwnPropertyNames;
+  var __hasOwnProp2 = Object.prototype.hasOwnProperty;
   var __export = (target, all) => {
     for (var name in all)
-      __defProp(target, name, { get: all[name], enumerable: true });
+      __defProp2(target, name, { get: all[name], enumerable: true });
   };
   var __copyProps = (to, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
-      for (let key of __getOwnPropNames(from))
-        if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+      for (let key of __getOwnPropNames2(from))
+        if (!__hasOwnProp2.call(to, key) && key !== except)
+          __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
     return to;
   };
-  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
   var dist_src_exports = {};
   __export(dist_src_exports, {
     createTokenAuth: () => createTokenAuth
@@ -19933,23 +19963,23 @@ var require_dist_node7 = __commonJS((exports, module) => {
 
 // node_modules/@octokit/core/dist-node/index.js
 var require_dist_node8 = __commonJS((exports, module) => {
-  var __defProp = Object.defineProperty;
+  var __defProp2 = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __getOwnPropNames2 = Object.getOwnPropertyNames;
+  var __hasOwnProp2 = Object.prototype.hasOwnProperty;
   var __export = (target, all) => {
     for (var name in all)
-      __defProp(target, name, { get: all[name], enumerable: true });
+      __defProp2(target, name, { get: all[name], enumerable: true });
   };
   var __copyProps = (to, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
-      for (let key of __getOwnPropNames(from))
-        if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+      for (let key of __getOwnPropNames2(from))
+        if (!__hasOwnProp2.call(to, key) && key !== except)
+          __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
     return to;
   };
-  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
   var index_exports = {};
   __export(index_exports, {
     Octokit: () => Octokit
@@ -20069,23 +20099,23 @@ var require_dist_node8 = __commonJS((exports, module) => {
 
 // node_modules/@octokit/plugin-rest-endpoint-methods/dist-node/index.js
 var require_dist_node9 = __commonJS((exports, module) => {
-  var __defProp = Object.defineProperty;
+  var __defProp2 = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __getOwnPropNames2 = Object.getOwnPropertyNames;
+  var __hasOwnProp2 = Object.prototype.hasOwnProperty;
   var __export = (target, all) => {
     for (var name in all)
-      __defProp(target, name, { get: all[name], enumerable: true });
+      __defProp2(target, name, { get: all[name], enumerable: true });
   };
   var __copyProps = (to, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
-      for (let key of __getOwnPropNames(from))
-        if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+      for (let key of __getOwnPropNames2(from))
+        if (!__hasOwnProp2.call(to, key) && key !== except)
+          __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
     return to;
   };
-  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
   var dist_src_exports = {};
   __export(dist_src_exports, {
     legacyRestEndpointMethods: () => legacyRestEndpointMethods,
@@ -22206,23 +22236,23 @@ var require_dist_node9 = __commonJS((exports, module) => {
 
 // node_modules/@octokit/plugin-paginate-rest/dist-node/index.js
 var require_dist_node10 = __commonJS((exports, module) => {
-  var __defProp = Object.defineProperty;
+  var __defProp2 = Object.defineProperty;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-  var __getOwnPropNames = Object.getOwnPropertyNames;
-  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __getOwnPropNames2 = Object.getOwnPropertyNames;
+  var __hasOwnProp2 = Object.prototype.hasOwnProperty;
   var __export = (target, all) => {
     for (var name in all)
-      __defProp(target, name, { get: all[name], enumerable: true });
+      __defProp2(target, name, { get: all[name], enumerable: true });
   };
   var __copyProps = (to, from, except, desc) => {
     if (from && typeof from === "object" || typeof from === "function") {
-      for (let key of __getOwnPropNames(from))
-        if (!__hasOwnProp.call(to, key) && key !== except)
-          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+      for (let key of __getOwnPropNames2(from))
+        if (!__hasOwnProp2.call(to, key) && key !== except)
+          __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
     }
     return to;
   };
-  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
   var dist_src_exports = {};
   __export(dist_src_exports, {
     composePaginateRest: () => composePaginateRest,
@@ -22680,105 +22710,101 @@ var require_github = __commonJS((exports) => {
 });
 
 // src/index.js
-var require_src = __commonJS(() => {
-  var core = require_core();
-  var github = require_github();
-  var webhook = core.getInput("webhook");
-  if (github.context.eventName !== "push") {
-    core.setFailed("This action only works on push events.");
-    process.exit(1);
-  }
-  if (!/https:\/\/discord(app|)\.com\/api\/webhooks\/\d+?\/.+/i.test(webhook)) {
-    core.setFailed("Invalid Discord webhook URL.");
-    process.exit(1);
-  }
-  var { payload } = github.context;
-  var shortSha = (s) => s.slice(0, 6);
-  var escapeMd = (s) => s.replace(/([\[\]\\`\(\)])/g, "\\$1");
-  var firstLine = (s) => s.split(`
+var core = __toESM(require_core(), 1);
+var github = __toESM(require_github(), 1);
+var webhook = core.getInput("webhook");
+if (github.context.eventName !== "push") {
+  core.setFailed("This action only works on push events.");
+  process.exit(1);
+}
+if (!/https:\/\/discord(app|)\.com\/api\/webhooks\/\d+?\/.+/i.test(webhook)) {
+  core.setFailed("Invalid Discord webhook URL.");
+  process.exit(1);
+}
+var { payload } = github.context;
+var shortSha = (s) => s.slice(0, 6);
+var escapeMd = (s) => s.replace(/([\[\]\\`\(\)])/g, "\\$1");
+var firstLine = (s) => s.split(`
 `)[0].trim();
-  var truncate = (s, max) => s.length > max ? s.slice(0, max - 1) + "…" : s;
-  var rawCommits = payload.commits ?? [];
-  var commits = rawCommits.map((c) => `- [\`[${shortSha(c.id)}]\`](${c.url}) ${escapeMd(firstLine(c.message))} - by ${c.author.name}`);
-  if (!commits.length)
-    process.exit(0);
-  var { before, after, repository } = payload;
-  var repoUrl = repository.html_url;
-  var compareUrl = `${repoUrl}/compare/${before}...${after}`;
-  var title = core.getInput("message-title") || "Commits received";
-  var threadId = core.getInput("thread-id");
-  function chunkArray(arr, limit = 4096) {
-    const chunks2 = [];
-    let current = [];
-    let length = 0;
-    for (const item of arr) {
-      const add = (current.length ? 1 : 0) + item.length;
-      if (length + add > limit) {
-        chunks2.push(current.join(`
+var truncate = (s, max) => s.length > max ? s.slice(0, max - 1) + "…" : s;
+var rawCommits = payload.commits ?? [];
+var commits = rawCommits.map((c) => `- [\`[${shortSha(c.id)}]\`](${c.url}) ${escapeMd(firstLine(c.message))} - by ${c.author.name}`);
+if (!commits.length)
+  process.exit(0);
+var { before, after, repository } = payload;
+var repoUrl = repository.html_url;
+var compareUrl = `${repoUrl}/compare/${before}...${after}`;
+var title = core.getInput("message-title") || "Commits received";
+var threadId = core.getInput("thread-id");
+function chunkArray(arr, limit = 4096) {
+  const chunks = [];
+  let current = [];
+  let length = 0;
+  for (const item of arr) {
+    const add = (current.length ? 1 : 0) + item.length;
+    if (length + add > limit) {
+      chunks.push(current.join(`
 `));
-        current = [item];
-        length = item.length;
-      } else {
-        current.push(item);
-        length += add;
-      }
-    }
-    if (current.length)
-      chunks2.push(current.join(`
-`));
-    return chunks2;
-  }
-  var allLines = [
-    `[\`[${shortSha(before)}...${shortSha(after)}]\`](${compareUrl})`
-  ].concat(commits);
-  var chunks = chunkArray(allLines);
-  var components = chunks.map((chunk, index) => ({
-    type: 9,
-    ...index === 0 && { accent_color: 5793266 },
-    components: [
-      ...index === 0 ? [
-        { type: 10, content: `## ${title}` },
-        { type: 14 }
-      ] : [],
-      { type: 10, content: chunk },
-      ...index === chunks.length - 1 ? [
-        { type: 14 },
-        {
-          type: 1,
-          components: [
-            {
-              type: 2,
-              style: 5,
-              label: truncate(`${repository.name}: view changes`, 80),
-              url: compareUrl,
-              emoji: { name: "\uD83D\uDD00" }
-            },
-            {
-              type: 2,
-              style: 5,
-              label: "Repository",
-              url: repoUrl,
-              emoji: { name: "\uD83D\uDCC1" }
-            }
-          ]
-        }
-      ] : []
-    ]
-  }));
-  var url = new URL(webhook);
-  if (threadId)
-    url.searchParams.set("thread_id", threadId);
-  fetch(url.toString(), {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ flags: 1 << 15, components })
-  }).then(async (res) => {
-    if (!res.ok) {
-      const text = await res.text();
-      core.setFailed(`Webhook request failed (${res.status}): ${text}`);
+      current = [item];
+      length = item.length;
     } else {
-      core.setOutput("result", "Webhook sent");
+      current.push(item);
+      length += add;
     }
-  }).catch((err) => core.setFailed(`Post to webhook failed: ${err}`));
-});
-export default require_src();
+  }
+  if (current.length)
+    chunks.push(current.join(`
+`));
+  return chunks;
+}
+var allLines = [
+  `[\`[${shortSha(before)}...${shortSha(after)}]\`](${compareUrl})`
+].concat(commits);
+var chunks = chunkArray(allLines);
+var components = [
+  {
+    type: 17,
+    accent_color: 5793266,
+    components: [
+      { type: 10, content: `## ${title}` },
+      { type: 14 },
+      ...chunks.map((chunk) => ({ type: 10, content: chunk })),
+      { type: 14 },
+      {
+        type: 1,
+        components: [
+          {
+            type: 2,
+            style: 5,
+            label: truncate(`${repository.name}: view changes`, 80),
+            url: compareUrl,
+            emoji: { name: "\uD83D\uDD00" }
+          },
+          {
+            type: 2,
+            style: 5,
+            label: "Repository",
+            url: repoUrl,
+            emoji: { name: "\uD83D\uDCC1" }
+          }
+        ]
+      }
+    ]
+  }
+];
+var url = new URL(webhook);
+url.searchParams.set("with_components", "true");
+if (threadId)
+  url.searchParams.set("thread_id", threadId);
+fetch(url.toString(), {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ flags: 1 << 15, components })
+}).then(async (res) => {
+  if (!res.ok) {
+    const text = await res.text();
+    core.setFailed(`Webhook request failed (${res.status}): ${text}`);
+  } else {
+    core.setOutput("result", "Webhook sent");
+  }
+}).catch((err) => core.setFailed(`Post to webhook failed: ${err}`));
