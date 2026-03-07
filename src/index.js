@@ -57,42 +57,40 @@ const allLines = [
 
 const chunks = chunkArray(allLines)
 
-// action_row (type 1) cannot be nested inside a container (type 9)
-// so we build a flat array: containers first, then one action_row at the end
 const components = [
-  ...chunks.map((chunk, index) => ({
-    type: 9, // container
-    ...(index === 0 && { accent_color: 0x5865F2 }),
-    components: [
-      ...(index === 0 ? [
-        { type: 10, content: `## ${title}` }, // text_display
-        { type: 14 }                           // separator
-      ] : []),
-      { type: 10, content: chunk }             // text_display
-    ]
-  })),
   {
-    type: 1, // action_row — top-level, outside container
+    type: 17, // container
+    accent_color: 0x5865F2,
     components: [
+      { type: 10, content: `## ${title}` }, // text_display
+      { type: 14 },                          // separator
+      ...chunks.map((chunk) => ({ type: 10, content: chunk })),
+      { type: 14 },                          // separator
       {
-        type: 2,  // button
-        style: 5, // link
-        label: truncate(`${repository.name}: view changes`, 80),
-        url: compareUrl,
-        emoji: { name: '🔀' }
-      },
-      {
-        type: 2,  // button
-        style: 5, // link
-        label: 'Repository',
-        url: repoUrl,
-        emoji: { name: '📁' }
+        type: 1, // action_row
+        components: [
+          {
+            type: 2,  // button
+            style: 5, // link
+            label: truncate(`${repository.name}: view changes`, 80),
+            url: compareUrl,
+            emoji: { name: '🔀' }
+          },
+          {
+            type: 2,  // button
+            style: 5, // link
+            label: 'Repository',
+            url: repoUrl,
+            emoji: { name: '📁' }
+          }
+        ]
       }
     ]
   }
 ]
 
 const url = new URL(webhook)
+url.searchParams.set('with_components', 'true')
 if (threadId) url.searchParams.set('thread_id', threadId)
 
 fetch(url.toString(), {
