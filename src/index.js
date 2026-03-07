@@ -1,4 +1,3 @@
-const axios = require('axios')
 const core = require('@actions/core')
 const github = require('@actions/github')
 
@@ -18,16 +17,18 @@ const { payload } = github.context
 const shortSha = (s) => s.slice(0, 6)
 const escapeMd = (s) => s.replace(/([\[\]\\`\(\)])/g, '\\$1')
 
-const commits = payload.commits.map(
+const rawCommits = payload.commits ?? []
+const commits = rawCommits.map(
   (c) => `- [\`[${shortSha(c.id)}]\`](${c.url}) ${escapeMd(c.message)} - by ${c.author.name}`
 )
 
 if (!commits.length) process.exit(0)
 
 const { before, after, repository } = payload
-const compareUrl = `${repository.url}/compare/${before}...${after}`
-const repoUrl = repository.html_url || repository.url
+const repoUrl = repository.html_url
+const compareUrl = `${repoUrl}/compare/${before}...${after}`
 const title = core.getInput('message-title') || 'Commits received'
+const threadId = core.getInput('thread-id')
 
 function chunkArray(arr, limit = 4096) {
   const chunks = []
@@ -57,11 +58,11 @@ const components = chunks.map((chunk, index) => ({
       { type: 10, content: `## ${title}` }, // text_display
       { type: 14 }                           // separator
     ] : []),
-    { type: 10, content: chunk },
+    { type: 10, content: chunk },            // text_display
     ...(index === chunks.length - 1 ? [
-      { type: 14 }, // separator
+      { type: 14 },                          // separator
       {
-        type: 1, // action_row
+        type: 1,                             // action_row
         components: [
           {
             type: 2,  // button
@@ -83,8 +84,20 @@ const components = chunks.map((chunk, index) => ({
   ]
 }))
 
-axios
-  .post(webhook, { flags: 1 << 15, components })
-  .then(() => core.setOutput('result', 'Webhook sent'))
+const url = new URL(webhook)
+if (threadId) url.searchParams.set('thread_id', threadId)
+
+fetch(url.toString(), {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ flags: 1 << 15, components })
+})
+  .then(async (res) => {
+    if (!res.ok) {
+      const text = await res.text()
+      core.setFailed(`Webhook request failed (${res.status}): ${text}`)
+    } else {
+      core.setOutput('result', 'Webhook sent')
+    }
+  })
   .catch((err) => core.setFailed(`Post to webhook failed: ${err}`))
-  

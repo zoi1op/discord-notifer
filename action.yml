@@ -11,12 +11,15 @@ inputs:
   message-title:
     description: Message title
     required: false
+  thread-id:
+    description: Discord thread or forum post ID to send the message into
+    required: false
 
 outputs:
   result:
     description: Webhook result
+    value: ${{ steps.run.outputs.result }}
 
 runs:
   using: node20
   main: dist/index.js
-  

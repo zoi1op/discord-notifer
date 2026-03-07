@@ -2,11 +2,9 @@
 
 GitHub Action that sends push notifications to Discord using **Message Components v2**.
 
-Each message includes a list of commits with authors and a button linking to the diff on GitHub.
+Each message includes a list of commits with authors and buttons linking to the diff and repository on GitHub.
 
 ## Usage
-
-### My workflow template
 
 ```yaml
 - uses: zoi1op/discord-notifer@v1
@@ -15,13 +13,13 @@ Each message includes a list of commits with authors and a button linking to the
     message-title: 'New commits'  # optional
 ```
 
-### Custom workflow template
+For forum channels / threads:
 
 ```yaml
-- uses: your-username/discord-notifer@v1
+- uses: zoi1op/discord-notifer@v1
   with:
     webhook: ${{ secrets.DISCORD_WEBHOOK }}
-    message-title: 'New commits'  # optional
+    thread-id: '1234567890123456789'
 ```
 
 ## Inputs
@@ -30,6 +28,7 @@ Each message includes a list of commits with authors and a button linking to the
 |-------|----------|-------------|
 | `webhook` | ✅ | Full Discord webhook URL |
 | `message-title` | ❌ | Title shown in the message (default: `Commits received`) |
+| `thread-id` | ❌ | Discord thread or forum post ID to send into |
 
 ## Outputs
 
@@ -45,7 +44,7 @@ Each message includes a list of commits with authors and a button linking to the
 4. In your GitHub repo go to **Settings** → **Secrets and variables** → **Actions**
 5. Add a new secret named `DISCORD_WEBHOOK` and paste the URL
 
-> For **forum channels** add `?thread_id=THREAD_ID` to the webhook URL to post into a specific thread.
+> For **forum channels** — get the thread ID by right-clicking the post → **Copy Thread ID** (requires Developer Mode enabled in Discord settings) and pass it as `thread-id`.
 
 ## Example workflow
 
@@ -70,10 +69,11 @@ jobs:
 
 ### Requirements
 
-- [Bun](https://bun.sh) — install via:
-  ```bash
-  curl -fsSL https://bun.sh/install | bash
-  ```
+Install [Bun](https://bun.sh):
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```
 
 ### Setup
 
@@ -87,7 +87,7 @@ bun install
 bun run build
 ```
 
-This bundles `src/index.js` and all dependencies into `dist/index.js` — the file GitHub Actions runs.
+Bundles `src/index.js` and all dependencies into `dist/index.js` — the file GitHub Actions runs directly.
 
 ### Project structure
 
