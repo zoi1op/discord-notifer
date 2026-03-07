@@ -62,3 +62,4 @@ axios
   .post(webhook, { flags: 1 << 15, components })
   .then(() => core.setOutput('result', 'Webhook sent'))
   .catch((err) => core.setFailed(`Post to webhook failed: ${err}`))
+  
