@@ -1,6 +1,6 @@
 # Discord Notifier
 
-GitHub Action that sends push notifications to Discord using **Message Components v2**.
+GitHub Action that sends push notifications to Discord using [**Message Components v2**](https://docs.discord.com/developers/components/reference#message-example-13).
 
 Each message includes a list of commits with authors and buttons linking to the diff and repository on GitHub.
 
